@@ -1,0 +1,10 @@
+<launch>
+
+<!--  Testing launch file -->
+<node name="vis_node" pkg="vis" type="vis_node.py">
+</node>
+
+
+
+</launch>
+

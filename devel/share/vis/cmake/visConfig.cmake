@@ -100,16 +100,16 @@ if(NOT " " STREQUAL " ")
     elseif("${idir} " STREQUAL "include ")
       get_filename_component(include "${vis_DIR}/../../../include" ABSOLUTE)
       if(NOT IS_DIRECTORY ${include})
-        message(FATAL_ERROR "Project 'vis' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  Ask the maintainer 'vijay <vijay@todo.todo>' to fix it.")
+        message(FATAL_ERROR "Project 'vis' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  Ask the maintainer 'vijay <vijay.somers@gmail.com>' to fix it.")
       endif()
     else()
-      message(FATAL_ERROR "Project 'vis' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/vijay/Source/visionNav/src/vis/${idir}'.  Ask the maintainer 'vijay <vijay@todo.todo>' to fix it.")
+      message(FATAL_ERROR "Project 'vis' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/vijay/Source/visionNav/src/vis/${idir}'.  Ask the maintainer 'vijay <vijay.somers@gmail.com>' to fix it.")
     endif()
     _list_append_unique(vis_INCLUDE_DIRS ${include})
   endforeach()
 endif()
 
-set(libraries "")
+set(libraries "vis")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")
@@ -122,7 +122,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/vijay/Source/visionNav/devel/lib;/home/vijay/Source/visionNav/devel/lib;/home/vijay/DRV/devel/lib;/opt/ros/indigo/lib)
+    foreach(path /home/vijay/Source/visionNav/devel/lib;/home/vijay/DRV/devel/lib;/opt/ros/indigo/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -153,7 +153,7 @@ foreach(t ${vis_EXPORTED_TARGETS})
   endif()
 endforeach()
 
-set(depends "")
+set(depends "roscpp;rospy")
 foreach(depend ${depends})
   string(REPLACE " " ";" depend_list ${depend})
   # the package name of the dependency must be kept in a unique variable so that it is not overwritten in recursive calls
