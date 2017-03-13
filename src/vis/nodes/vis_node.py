@@ -11,10 +11,16 @@ def main():
     #pub = rospy.Publisher('chatter', String, queue_size=10)
     rospy.init_node('vis', anonymous=True)
     rate = rospy.Rate(10) # 10hz
+
+
+
     #rospy.on_shutdown(shutdownActions)
+    rospy.logerr("&&&&&&&&&&&&&&&&&&&&&&&&&&")
+    #rospy.logerr(cv2.getBuildInformation())
     image_path = "~/hovercat.jpg"
+    #cv2.LoadImage(image_path, iscolor=CV_LOAD_IMAGE_COLOR)
     image = cv2.imread(image_path, cv2.IMREAD_COLOR)
-    print image.size
+    rospy.logerr(image.size)
 
     #size = 200, 200
     #m = np.zeros(size, dtype=np.uint8)
