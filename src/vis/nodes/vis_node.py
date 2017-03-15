@@ -2,6 +2,8 @@
 import rospy
 import cv2
 import numpy as np
+import camera_manager as cm
+
 
 
 def shutdownActions():
@@ -14,24 +16,24 @@ def main():
 
 
 
-    #rospy.on_shutdown(shutdownActions)
     rospy.logerr("&&&&&&&&&&&&&&&&&&&&&&&&&&")
-    #rospy.logerr(cv2.getBuildInformation())
-    image_path = "~/hovercat.jpg"
-    #cv2.LoadImage(image_path, iscolor=CV_LOAD_IMAGE_COLOR)
-    image = cv2.imread(image_path, cv2.IMREAD_COLOR)
-    rospy.logerr(image.size)
+    datafolder_path = "/home/vijay/Source/visionNav/data/"
+    image_file = "hovercat.jpg"
+    image = cv2.imread(datafolder_path + image_file, cv2.IMREAD_COLOR)
+    #rospy.logerr(image.size)
 
-    #size = 200, 200
-    #m = np.zeros(size, dtype=np.uint8)
     cv2.namedWindow("draw", cv2.CV_WINDOW_AUTOSIZE)
+
+
+    camera = cm.camera_manager()
 
     while not rospy.is_shutdown():
 
         hello_str = "hello wod %s" % rospy.get_time()
         rospy.logerr(hello_str)
         #pub.publish(hello_str)
-        cv2.imshow("draw", image)
+
+        #cv2.imshow("draw", camimage)
         cv2.waitKey(1)
         rate.sleep()
 
