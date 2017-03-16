@@ -148,9 +148,9 @@ include_directories(
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
 install(PROGRAMS
-   nodes/vis_node.py
+   #nodes/vis_node.py
    #nodes/camera_manager.py
-   src/vis/camera_manager.py
+   #src/vis/camera_manager.py
    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

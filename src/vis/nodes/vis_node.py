@@ -2,7 +2,7 @@
 import rospy
 import cv2
 import numpy as np
-import camera_manager as cm
+from vis.camera_manager import camera_manager
 
 
 
@@ -25,7 +25,7 @@ def main():
     cv2.namedWindow("draw", cv2.CV_WINDOW_AUTOSIZE)
 
 
-    camera = cm.camera_manager()
+    camera = camera_manager()
 
     while not rospy.is_shutdown():
 
